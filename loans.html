@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EURX — Loans</title>
+    <title>EURX — Loans & Islamic Financing</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRXP2EW5J6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -19,10 +19,7 @@
             color: #fff;
             padding: 20px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
         h1, h2 { color: #FFD700; margin-bottom: 20px; }
         .loan-card {
             background: rgba(255,255,255,0.05);
@@ -30,7 +27,9 @@
             padding: 30px;
             margin-bottom: 30px;
             border: 1px solid rgba(255,215,0,0.3);
+            transition: transform 0.3s;
         }
+        .loan-card:hover { transform: translateY(-5px); border-color: #FFD700; }
         .btn {
             display: inline-block;
             background: #FFD700;
@@ -41,6 +40,15 @@
             font-weight: bold;
             margin-top: 20px;
         }
+        .btn:hover { background: #FFA500; }
+        .address {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 15px 0;
+        }
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -48,29 +56,68 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         .footer a { color: #FFD700; text-decoration: none; margin: 0 10px; }
+        .rule-box {
+            background: rgba(255,215,0,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🏦 EURX Loans</h1>
-    <p>Use EURX as collateral to get financing. Islamic financing available (0% riba).</p>
+    <h1>🏦 EURX Loans & Islamic Financing</h1>
+    <p>Sharia-compliant financing with 0% riba. All loans require 125% collateral.</p>
 
-    <div class="loan-card">
-        <h2>💰 Crypto-Backed Loan</h2>
-        <p>Use EURX as collateral. Loan amount: up to 70% of collateral value. Term: up to 60 months.</p>
-        <a href="loan-crypto.html" class="btn">Apply →</a>
+    <div class="rule-box">
+        <p>💰 <strong>Общие условия:</strong></p>
+        <p>• Залоговое покрытие: <strong>125%</strong> (недвижимость, BYT, ZBANK, EURZ, YBANK, EURG, криптовекселя BYT, SBLC)</p>
+        <p>• Admin fee: <strong>5%</strong> | Arrangement fee: <strong>1.5%</strong> (возвращается при нашей ошибке)</p>
+        <p>• Страховка: <strong>0.5–4%</strong> (Soter Insure / Relm Insurance)</p>
+        <p>• KYC обязателен | США не принимаем</p>
     </div>
 
     <div class="loan-card">
-        <h2>🏠 Crypto Mortgage</h2>
-        <p>Use EURX as down payment. Real estate financing. Term: 5–30 years.</p>
-        <a href="loan-mortgage.html" class="btn">Apply →</a>
+        <h2>💚 Qard al-Hasan — Interest-Free Loan</h2>
+        <p>Goodwill loan with no interest. You repay only the principal.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-qard.html" class="btn">Apply →</a>
     </div>
 
     <div class="loan-card">
-        <h2>☪️ Islamic Financing</h2>
-        <p>0% riba. Murabaha, Mudaraba, Ijara, Qard al-Hasan structures.</p>
-        <a href="loan-islamic.html" class="btn">Learn more →</a>
+        <h2>🌾 Salam — Prepay for Future Goods</h2>
+        <p>We pay in EURX today for goods delivered later. Price fixed. No interest.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-salam.html" class="btn">Apply →</a>
+    </div>
+
+    <div class="loan-card">
+        <h2>🏗️ Istisna — Project Financing</h2>
+        <p>We finance your project in stages. Final price fixed. No interest.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-istisna.html" class="btn">Apply →</a>
+    </div>
+
+    <div class="loan-card">
+        <h2>🤝 Mudaraba — Profit-Sharing Investment</h2>
+        <p>We provide EURX capital. You run the business. Profit shared 50/50. No interest.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-mudaraba.html" class="btn">Apply →</a>
+    </div>
+
+    <div class="loan-card">
+        <h2>🏢 Ijara — Islamic Lease-to-Own</h2>
+        <p>We buy the asset. You lease it. At the end — it's yours. No interest.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-ijara.html" class="btn">Apply →</a>
+    </div>
+
+    <div class="loan-card">
+        <h2>📦 Murabaha — Cost-Plus Financing</h2>
+        <p>We buy an asset and sell it to you at a markup. You pay in installments. No interest.</p>
+        <p><strong>Admin fee:</strong> 5% | <strong>Arrangement fee:</strong> 1.5% | <strong>Collateral:</strong> 125%</p>
+        <a href="loan-murabaha.html" class="btn">Apply →</a>
     </div>
 
     <div class="footer">
