@@ -24,28 +24,29 @@
             padding: 20px;
         }
         .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* Language Dropdown */
         .lang-switch {
             position: absolute;
             top: 20px;
             right: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: flex-end;
             z-index: 100;
-            max-width: 80%;
         }
-        .lang-btn {
-            background: rgba(255,255,255,0.1);
+        .lang-dropdown {
+            background: rgba(0,0,0,0.8);
             border: 1px solid #FFD700;
+            border-radius: 8px;
+            padding: 8px 12px;
             color: #FFD700;
-            padding: 3px 8px;
-            border-radius: 20px;
             cursor: pointer;
-            font-size: 0.65rem;
-            transition: all 0.3s;
+            font-size: 14px;
+            outline: none;
         }
-        .lang-btn.active, .lang-btn:hover { background: #FFD700; color: #000; }
+        .lang-dropdown option {
+            background: #000;
+            color: #FFD700;
+        }
+        
         .header { text-align: center; padding: 100px 20px 40px; }
         .logo a { display: inline-block; transition: all 0.3s ease; }
         .logo a:hover { transform: scale(1.05); opacity: 0.9; filter: drop-shadow(0 0 15px #FFD700); }
@@ -118,7 +119,7 @@
         }
         .footer a { color: #FFD700; text-decoration: none; margin: 0 5px; }
         @media (max-width: 768px) {
-            .lang-switch { position: static; justify-content: center; margin-bottom: 20px; }
+            .lang-switch { position: static; text-align: right; margin-bottom: 20px; }
             .header { padding-top: 20px; }
             .btn-group { flex-direction: column; align-items: center; }
             .btn { width: 80%; text-align: center; }
@@ -129,32 +130,21 @@
 </head>
 <body>
 <div class="container">
-    <div class="lang-switch" id="langSwitcher">
-        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
-        <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
-        <button class="lang-btn" data-lang="ar">🇦🇪 AR</button>
-        <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
-        <button class="lang-btn" data-lang="tr">🇹🇷 TR</button>
-        <button class="lang-btn" data-lang="hi">🇮🇳 HI</button>
-        <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
-        <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
-        <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
-        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
-        <button class="lang-btn" data-lang="uz">🇺🇿 UZ</button>
-        <button class="lang-btn" data-lang="kg">🇰🇬 KG</button>
-        <button class="lang-btn" data-lang="kz">🇰🇿 KZ</button>
-        <button class="lang-btn" data-lang="tj">🇹🇯 TJ</button>
-        <button class="lang-btn" data-lang="tm">🇹🇲 TM</button>
-        <button class="lang-btn" data-lang="az">🇦🇿 AZ</button>
-        <button class="lang-btn" data-lang="ge">🇬🇪 GE</button>
-        <button class="lang-btn" data-lang="am">🇦🇲 AM</button>
-        <button class="lang-btn" data-lang="he">🇮🇱 HE</button>
-        <button class="lang-btn" data-lang="fa">🇮🇷 FA</button>
-        <button class="lang-btn" data-lang="ko">🇰🇷 KO</button>
-        <button class="lang-btn" data-lang="lv">🇱🇻 LV</button>
-        <button class="lang-btn" data-lang="ja">🇯🇵 JA</button>
-        <button class="lang-btn" data-lang="br">🇧🇷 PT</button>
-        <button class="lang-btn" data-lang="ve">🇻🇪 ES</button>
+    <!-- Language Dropdown -->
+    <div class="lang-switch">
+        <select id="languageSelect" class="lang-dropdown">
+            <option value="en">🇬🇧 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="uz">🇺🇿 O'zbek</option>
+            <option value="kz">🇰🇿 Қазақша</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="th">🇹🇭 ไทย</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+        </select>
     </div>
 
     <div class="header">
@@ -218,7 +208,7 @@
     </div>
 
     <div class="section">
-        <div class="section-title">💰 EURX Tokenomics</div>
+        <div class="section-title" id="title3">💰 EURX Tokenomics</div>
         <div class="cards">
             <div class="card"><div class="card-icon">🔄</div><h3>Total Supply</h3><p>1,000,000,000,000 EURX<br>Fixed. No mint. No freeze.</p></div>
             <div class="card"><div class="card-icon">🔒</div><h3>Ownership Revoked</h3><p>Admin rights are revoked. No one can mint new tokens or freeze wallets.</p></div>
@@ -265,6 +255,7 @@
 
     const translations = {
         en: {
+            tagline: "Digital Asset on TON",
             btnBot: "🤖 Telegram Bot",
             btnBuy: "💰 Buy EURX",
             btnSupport: "💬 Support",
@@ -275,6 +266,7 @@
             calcBtn: "Calculate",
             title1: "📚 Complete Ecosystem",
             title2: "⚡ What You Can Do With EURX",
+            title3: "💰 EURX Tokenomics",
             card1Title: "Buy EURX",
             card1Desc: "Swap TON for EURX on STON.fi. Or buy TON with card → swap.",
             card2Title: "Earn Yield",
@@ -289,6 +281,7 @@
             card6Desc: "Accept EURX payments. Corporate treasury, B2B cross-border."
         },
         ru: {
+            tagline: "Цифровой актив на TON",
             btnBot: "🤖 Telegram Бот",
             btnBuy: "💰 Купить EURX",
             btnSupport: "💬 Поддержка",
@@ -299,6 +292,7 @@
             calcBtn: "Рассчитать",
             title1: "📚 Полная экосистема",
             title2: "⚡ Что можно делать с EURX",
+            title3: "💰 Токеномика EURX",
             card1Title: "Купить EURX",
             card1Desc: "Обменяйте TON на EURX на STON.fi. Или купите TON за карту → обменяйте.",
             card2Title: "Зарабатывать",
@@ -311,11 +305,131 @@
             card5Desc: "Покупайте токенизированное золото (PAXG, XAUT) за EURX.",
             card6Title: "Бизнес решения",
             card6Desc: "Принимайте EURX. Корпоративные казначейства, B2B."
+        },
+        zh: {
+            tagline: "TON上的数字资产", btnBot: "🤖 电报机器人", btnBuy: "💰 购买 EURX", btnSupport: "💬 支持",
+            formula1: "📈 购买 +1% 的 EURX 供应量", formula2: "💎 获得 +9% 的非流动性资产添加到您的流动性中",
+            formulaDesc: "(冻结资金、侧袋、不良贷款、不良债务、黄金、钻石、加密票据)",
+            calcTitle: "📊 计算您的增长", calcBtn: "计算",
+            title1: "📚 完整生态系统", title2: "⚡ 您可以用 EURX 做什么", title3: "💰 EURX 代币经济学",
+            card1Title: "购买 EURX", card1Desc: "在 STON.fi 上将 TON 兑换为 EURX。或用银行卡购买 TON → 兑换。",
+            card2Title: "赚取收益", card2Desc: "存入 EURX 25-60 个月。年化收益率高达 19.8%。",
+            card3Title: "获得贷款", card3Desc: "使用 EURX 作为抵押品。加密抵押贷款、伊斯兰金融。",
+            card4Title: "托管服务", card4Desc: "SWIFT GPI、DMCC 迪拜、LEXR 瑞士。安全法币 → EURX。",
+            card5Title: "黄金与钻石", card5Desc: "用 EURX 购买代币化黄金 (PAXG, XAUT)。5-20 年存储。",
+            card6Title: "商业解决方案", card6Desc: "接受 EURX 支付。企业财资、B2B 跨境。"
+        },
+        uz: {
+            tagline: "TON da raqamli aktiv", btnBot: "🤖 Telegram Bot", btnBuy: "💰 EURX Sotib olish", btnSupport: "💬 Yordam",
+            formula1: "📈 EURX ta'minotining +1% ni sotib oling", formula2: "💎 Likvidligingizga +9% likvid bo'lmagan aktivlar qo'shiladi",
+            formulaDesc: "(muzlatilgan fondlar, side pocketlar, NPLlar, muammoli qarzlar, oltin, olmos, kriptoveksellar)",
+            calcTitle: "📊 O'sishingizni hisoblang", calcBtn: "Hisoblash",
+            title1: "📚 To'liq ekotizim", title2: "⚡ EURX bilan nima qila olasiz", title3: "💰 EURX Tokenomikasi",
+            card1Title: "EURX Sotib olish", card1Desc: "STON.fi da TONni EURXga almashtiring. Yoki karta bilan TON sotib oling → almashtiring.",
+            card2Title: "Daromad olish", card2Desc: "EURXni 25-60 oyga depozitga qo'ying. Yillik 19.8% gacha daromad.",
+            card3Title: "Kredit olish", card3Desc: "EURXni garov sifatida ishlating. Kripto ipoteka, islom moliyasi.",
+            card4Title: "Eskrou xizmatlari", card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Shveysariya. Xavfsiz fiat → EURX.",
+            card5Title: "Oltin va olmos", card5Desc: "EURX bilan tokenlashtirilgan oltin (PAXG, XAUT) sotib oling. 5-20 yil saqlash.",
+            card6Title: "Biznes yechimlari", card6Desc: "EURX to'lovlarini qabul qiling. Korporativ g'azna, B2B transchegaraviy."
+        },
+        kz: {
+            tagline: "TON желісіндегі цифрлық актив", btnBot: "🤖 Telegram Бот", btnBuy: "💰 EURX Сатып алу", btnSupport: "💬 Қолдау",
+            formula1: "📈 EURX ұсынысының +1% сатып алыңыз", formula2: "💎 Сіздің ликвидтілігіңізге +9% ликвидті емес активтер қосылады",
+            formulaDesc: "(мұздатылған қорлар, side pocketтар, NPL, проблемалы қарыздар, алтын, гауһар, криптовексельдер)",
+            calcTitle: "📊 Өсуіңізді есептеңіз", calcBtn: "Есептеу",
+            title1: "📚 Толық экожүйе", title2: "⚡ EURX көмегімен не істеуге болады", title3: "💰 EURX Токеномикасы",
+            card1Title: "EURX Сатып алу", card1Desc: "STON.fi платформасында TON-ды EURX-қа ауыстырыңыз. Немесе карта арқылы TON сатып алыңыз → ауыстырыңыз.",
+            card2Title: "Табыс табу", card2Desc: "EURX-ты 25-60 айға депозитке салыңыз. Жылдық 19.8% дейін табыс.",
+            card3Title: "Несие алу", card3Desc: "EURX-ты кепіл ретінде пайдаланыңыз. Крипто-ипотека, ислам қаржыландыру.",
+            card4Title: "Эскроу қызметтері", card4Desc: "SWIFT GPI, DMCC Дубай, LEXR Швейцария. Қауіпсіз фиат → EURX.",
+            card5Title: "Алтын және гауһар", card5Desc: "EURX арқылы токенделген алтын (PAXG, XAUT) сатып алыңыз. 5-20 жыл сақтау.",
+            card6Title: "Бизнес шешімдер", card6Desc: "EURX төлемдерін қабылдаңыз. Корпоративтік қазына, B2B трансшекаралық."
+        },
+        es: {
+            tagline: "Activo digital en TON", btnBot: "🤖 Bot de Telegram", btnBuy: "💰 Comprar EURX", btnSupport: "💬 Soporte",
+            formula1: "📈 Compra +1% del suministro de EURX", formula2: "💎 Obtén +9% en activos ilíquidos agregados a tu liquidez",
+            formulaDesc: "(fondos congelados, side pockets, NPLs, deuda problemática, oro, diamantes, pagarés cripto)",
+            calcTitle: "📊 Calcula tu crecimiento", calcBtn: "Calcular",
+            title1: "📚 Ecosistema completo", title2: "⚡ Qué puedes hacer con EURX", title3: "💰 Tokenómica de EURX",
+            card1Title: "Comprar EURX", card1Desc: "Intercambia TON por EURX en STON.fi. O compra TON con tarjeta → intercambia.",
+            card2Title: "Ganar rendimiento", card2Desc: "Deposita EURX por 25–60 meses. Gana hasta 19.8% APY.",
+            card3Title: "Obtener un préstamo", card3Desc: "Usa EURX como garantía. Hipoteca cripto, financiación islámica.",
+            card4Title: "Servicios de depósito", card4Desc: "SWIFT GPI, DMCC Dubái, LEXR Suiza. Conversión segura de fiat → EURX.",
+            card5Title: "Oro y diamantes", card5Desc: "Compra oro tokenizado (PAXG, XAUT) con EURX. Almacenamiento 5-20 años.",
+            card6Title: "Soluciones empresariales", card6Desc: "Acepta pagos en EURX. Tesorería corporativa, B2B transfronterizo."
+        },
+        de: {
+            tagline: "Digitaler Vermögenswert auf TON", btnBot: "🤖 Telegram Bot", btnBuy: "💰 EURX kaufen", btnSupport: "💬 Support",
+            formula1: "📈 Kaufen Sie +1% des EURX-Angebots", formula2: "💎 Erhalten Sie +9% an illiquiden Vermögenswerten zu Ihrer Liquidität",
+            formulaDesc: "(eingefrorene Gelder, Side Pockets, NPLs, notleidende Kredite, Gold, Diamanten, Kryptowechsel)",
+            calcTitle: "📊 Berechnen Sie Ihr Wachstum", calcBtn: "Berechnen",
+            title1: "📚 Vollständiges Ökosystem", title2: "⚡ Was Sie mit EURX tun können", title3: "💰 EURX Tokenomics",
+            card1Title: "EURX kaufen", card1Desc: "Tauschen Sie TON auf STON.fi gegen EURX. Oder kaufen Sie TON mit Karte → tauschen.",
+            card2Title: "Erträge erzielen", card2Desc: "Zahlen Sie EURX für 25–60 Monate ein. Verdienen Sie bis zu 19,8 % APY.",
+            card3Title: "Kredit erhalten", card3Desc: "Verwenden Sie EURX als Sicherheit. Krypto-Hypothek, islamische Finanzierung.",
+            card4Title: "Treuhanddienste", card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Schweiz. Sicherer Fiat → EURX.",
+            card5Title: "Gold & Diamanten", card5Desc: "Kaufen Sie tokenisiertes Gold (PAXG, XAUT) mit EURX. 5–20 Jahre Lagerung.",
+            card6Title: "Geschäftslösungen", card6Desc: "Akzeptieren Sie EURX-Zahlungen. Firmenschatzamt, B2B-Cross-Border."
+        },
+        fr: {
+            tagline: "Actif numérique sur TON", btnBot: "🤖 Bot Telegram", btnBuy: "💰 Acheter EURX", btnSupport: "💬 Support",
+            formula1: "📈 Achetez +1% de l'offre EURX", formula2: "💎 Obtenez +9% d'actifs illiquides ajoutés à votre liquidité",
+            formulaDesc: "(fonds gelés, side pockets, NPL, dettes difficiles, or, diamants, billets crypto)",
+            calcTitle: "📊 Calculez votre croissance", calcBtn: "Calculer",
+            title1: "📚 Écosystème complet", title2: "⚡ Ce que vous pouvez faire avec EURX", title3: "💰 Tokenomique EURX",
+            card1Title: "Acheter EURX", card1Desc: "Échangez TON contre EURX sur STON.fi. Ou achetez TON par carte → échangez.",
+            card2Title: "Gagner du rendement", card2Desc: "Déposez EURX pendant 25–60 mois. Gagnez jusqu'à 19,8 % APY.",
+            card3Title: "Obtenir un prêt", card3Desc: "Utilisez EURX comme garantie. Hypothèque crypto, financement islamique.",
+            card4Title: "Services de séquestre", card4Desc: "SWIFT GPI, DMCC Dubaï, LEXR Suisse. Conversion sécurisée fiat → EURX.",
+            card5Title: "Or et diamants", card5Desc: "Achetez de l'or tokenisé (PAXG, XAUT) avec EURX. Stockage 5–20 ans.",
+            card6Title: "Solutions d'entreprise", card6Desc: "Acceptez les paiements EURX. Trésorerie d'entreprise, B2B transfrontalier."
+        },
+        ja: {
+            tagline: "TON上のデジタル資産", btnBot: "🤖 Telegramボット", btnBuy: "💰 EURXを購入", btnSupport: "💬 サポート",
+            formula1: "📈 EURX供給量の+1%を購入", formula2: "💎 流動性に+9%の非流動性資産が追加されます",
+            formulaDesc: "(凍結資金、サイドポケット、不良債権、問題債務、金、ダイヤモンド、暗号手形)",
+            calcTitle: "📊 成長を計算", calcBtn: "計算",
+            title1: "📚 完全なエコシステム", title2: "⚡ EURXでできること", title3: "💰 EURXトークノミクス",
+            card1Title: "EURXを購入", card1Desc: "STON.fiでTONをEURXに交換。またはカードでTONを購入→交換。",
+            card2Title: "利回りを得る", card2Desc: "EURXを25～60ヶ月間預け入れ。最大19.8%の年利。",
+            card3Title: "ローンを受ける", card3Desc: "EURXを担保として使用。暗号住宅ローン、イスラム金融。",
+            card4Title: "エスクローサービス", card4Desc: "SWIFT GPI、DMCCドバイ、LEXRスイス。安全なフィアット→EURX。",
+            card5Title: "金とダイヤモンド", card5Desc: "EURXでトークン化された金（PAXG、XAUT）を購入。5～20年の保管。",
+            card6Title: "ビジネスソリューション", card6Desc: "EURX支払いを受け入れ。企業財務、B2Bクロスボーダー。"
+        },
+        th: {
+            tagline: "สินทรัพย์ดิจิทัลบน TON", btnBot: "🤖 บอท Telegram", btnBuy: "💰 ซื้อ EURX", btnSupport: "💬 สนับสนุน",
+            formula1: "📈 ซื้อ +1% ของอุปทาน EURX", formula2: "💎 ได้รับ +9% ในสินทรัพย์สภาพคล่องต่ำเพิ่มในสภาพคล่องของคุณ",
+            formulaDesc: "(กองทุนถูกแช่แข็ง, side pockets, NPL, หนี้เสีย, ทองคำ, เพชร, ตั๋วเงินคริปโต)",
+            calcTitle: "📊 คำนวณการเติบโตของคุณ", calcBtn: "คำนวณ",
+            title1: "📚 ระบบนิเวศที่สมบูรณ์", title2: "⚡ สิ่งที่คุณสามารถทำได้กับ EURX", title3: "💰 EURX Tokenomics",
+            card1Title: "ซื้อ EURX", card1Desc: "สลับ TON เป็น EURX บน STON.fi หรือซื้อ TON ด้วยบัตร → สลับ",
+            card2Title: "รับผลตอบแทน", card2Desc: "ฝาก EURX 25–60 เดือน รับสูงสุด 19.8% APY",
+            card3Title: "ขอสินเชื่อ", card3Desc: "ใช้ EURX เป็นหลักประกัน สินเชื่อจำนองคริปโต, การเงินอิสลาม",
+            card4Title: "บริการเอสโครว์", card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Switzerland ปลอดภัย fiat → EURX",
+            card5Title: "ทองคำและเพชร", card5Desc: "ซื้อทองคำโทเค็น (PAXG, XAUT) ด้วย EURX เก็บรักษา 5–20 ปี",
+            card6Title: "โซลูชันธุรกิจ", card6Desc: "รับการชำระเงิน EURX คลังองค์กร, B2B ข้ามพรมแดน"
+        },
+        hi: {
+            tagline: "TON पर डिजिटल एसेट", btnBot: "🤖 टेलीग्राम बॉट", btnBuy: "💰 EURX खरीदें", btnSupport: "💬 सहायता",
+            formula1: "📈 EURX आपूर्ति का +1% खरीदें", formula2: "💎 आपकी लिक्विडिटी में +9% गैर-लिक्विड एसेट जोड़े जाते हैं",
+            formulaDesc: "(फ्रोजन फंड, साइड पॉकेट, एनपीएल, संकटग्रस्त ऋण, सोना, हीरे, क्रिप्टो बिल)",
+            calcTitle: "📊 अपनी वृद्धि की गणना करें", calcBtn: "गणना करें",
+            title1: "📚 पूर्ण पारिस्थितिकी तंत्र", title2: "⚡ आप EURX के साथ क्या कर सकते हैं", title3: "💰 EURX टोकेनोमिक्स",
+            card1Title: "EURX खरीदें", card1Desc: "STON.fi पर TON को EURX में बदलें। या कार्ड से TON खरीदें → बदलें।",
+            card2Title: "उपज अर्जित करें", card2Desc: "EURX को 25–60 महीनों के लिए जमा करें। 19.8% APY तक कमाएं।",
+            card3Title: "ऋण प्राप्त करें", card3Desc: "EURX को संपार्श्विक के रूप में उपयोग करें। क्रिप्टो बंधक, इस्लामी वित्तपोषण।",
+            card4Title: "एस्क्रो सेवाएं", card4Desc: "SWIFT GPI, DMCC दुबई, LEXR स्विट्जरलैंड। सुरक्षित फिएट → EURX।",
+            card5Title: "सोना और हीरे", card5Desc: "EURX के साथ टोकनयुक्त सोना (PAXG, XAUT) खरीदें। 5–20 साल भंडारण।",
+            card6Title: "व्यावसायिक समाधान", card6Desc: "EURX भुगतान स्वीकार करें। कॉर्पोरेट ट्रेजरी, B2B क्रॉस-बॉर्डर।"
         }
     };
+
     const defaultLang = "en";
+    
     function setLanguage(lang) {
         const t = translations[lang] || translations[defaultLang];
+        document.getElementById('tagline').innerText = t.tagline;
         document.getElementById('btnBot').innerText = t.btnBot;
         document.getElementById('btnBuy').innerText = t.btnBuy;
         document.getElementById('btnSupport').innerText = t.btnSupport;
@@ -326,6 +440,7 @@
         document.getElementById('calcBtn').innerText = t.calcBtn;
         document.getElementById('title1').innerText = t.title1;
         document.getElementById('title2').innerText = t.title2;
+        document.getElementById('title3').innerText = t.title3;
         document.getElementById('card1Title').innerText = t.card1Title;
         document.getElementById('card1Desc').innerText = t.card1Desc;
         document.getElementById('card2Title').innerText = t.card2Title;
@@ -339,10 +454,13 @@
         document.getElementById('card6Title').innerText = t.card6Title;
         document.getElementById('card6Desc').innerText = t.card6Desc;
         localStorage.setItem('eurx_lang', lang);
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        if(document.querySelector(`.lang-btn[data-lang="${lang}"]`)) document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+        document.getElementById('languageSelect').value = lang;
     }
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    
+    document.getElementById('languageSelect').addEventListener('change', (e) => {
+        setLanguage(e.target.value);
+    });
+    
     const savedLang = localStorage.getItem('eurx_lang');
     if(savedLang && translations[savedLang]) setLanguage(savedLang);
     else setLanguage('en');
