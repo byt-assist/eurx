@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EURX — Digital Asset on TON</title>
+    <meta name="description" content="EURX is a digital asset on TON. Total supply: 1,000,000,000,000. Fixed supply. No mint. No freeze. Ownership revoked. Part of BYT Assist ecosystem.">
+    <meta name="keywords" content="EURX, TON, digital asset, BYT Assist">
+    <link rel="canonical" href="https://byt-assist.github.io/eurx/">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRXP2EW5J6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QRXP2EW5J6');
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a2a 0%, #000000 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-end;
+            z-index: 100;
+            max-width: 80%;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover { background: #FFD700; color: #000; }
+        .header { text-align: center; padding: 100px 20px 40px; }
+        .logo a { display: inline-block; transition: all 0.3s ease; }
+        .logo a:hover { transform: scale(1.05); opacity: 0.9; filter: drop-shadow(0 0 15px #FFD700); }
+        .logo img { max-width: 280px; width: 100%; height: auto; margin-bottom: 20px; }
+        .tagline { font-size: 1.2rem; color: #ccc; margin-bottom: 20px; }
+        .contract { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 40px; display: inline-block; font-family: monospace; font-size: 0.9rem; word-break: break-all; }
+        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
+        .btn { padding: 12px 24px; border-radius: 40px; text-decoration: none; font-weight: bold; transition: all 0.3s; }
+        .btn-primary { background: #FFD700; color: #000; }
+        .btn-primary:hover { background: #FFA500; transform: translateY(-2px); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #FFD700; }
+        .btn-secondary:hover { background: rgba(255,215,0,0.2); transform: translateY(-2px); }
+        .section { margin: 60px 0; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: #FFD700; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); border: 1px solid rgba(255,215,0,0.3); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #FFD700; }
+        .card-icon { font-size: 2.5rem; margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; color: #FFD700; }
+        .card p { color: #ccc; margin-bottom: 20px; }
+        .card-link { color: #FFD700; text-decoration: none; font-weight: bold; }
+        .partners { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin: 40px 0; }
+        .partner { background: rgba(255,255,255,0.05); padding: 15px 25px; border-radius: 40px; font-weight: bold; }
+        .footer { text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; }
+        .footer a { color: #FFD700; text-decoration: none; margin: 0 5px; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+        .nav-card { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 15px; text-align: center; border: 1px solid rgba(255,215,0,0.3); }
+        .nav-card a { color: #FFD700; text-decoration: none; font-weight: bold; }
+        @media (max-width: 768px) {
+            .lang-switch { position: static; justify-content: center; margin-bottom: 20px; }
+            .header { padding-top: 20px; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .btn { width: 80%; text-align: center; }
+            .logo img { max-width: 200px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="lang-switch" id="langSwitcher">
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+        <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+        <button class="lang-btn" data-lang="ar">🇦🇪 AR</button>
+        <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
+        <button class="lang-btn" data-lang="tr">🇹🇷 TR</button>
+        <button class="lang-btn" data-lang="hi">🇮🇳 HI</button>
+        <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
+        <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+        <button class="lang-btn" data-lang="uz">🇺🇿 UZ</button>
+        <button class="lang-btn" data-lang="kg">🇰🇬 KG</button>
+        <button class="lang-btn" data-lang="kz">🇰🇿 KZ</button>
+        <button class="lang-btn" data-lang="tj">🇹🇯 TJ</button>
+        <button class="lang-btn" data-lang="tm">🇹🇲 TM</button>
+        <button class="lang-btn" data-lang="az">🇦🇿 AZ</button>
+        <button class="lang-btn" data-lang="ge">🇬🇪 GE</button>
+        <button class="lang-btn" data-lang="am">🇦🇲 AM</button>
+        <button class="lang-btn" data-lang="he">🇮🇱 HE</button>
+        <button class="lang-btn" data-lang="fa">🇮🇷 FA</button>
+        <button class="lang-btn" data-lang="ko">🇰🇷 KO</button>
+        <button class="lang-btn" data-lang="lv">🇱🇻 LV</button>
+        <button class="lang-btn" data-lang="ja">🇯🇵 JA</button>
+        <button class="lang-btn" data-lang="br">🇧🇷 PT</button>
+        <button class="lang-btn" data-lang="ve">🇻🇪 ES</button>
+    </div>
+
+    <div class="header">
+        <div class="logo">
+            <a href="https://byt-assist.github.io/eurx/">
+                <img src="eurx_logo.png" alt="EURX">
+            </a>
+        </div>
+        <div class="tagline" id="tagline">Digital Asset on TON</div>
+        <div class="contract">📄 Contract: EQA84dxGA4EHWqx2pcMGYpvCG80tqRCoWJfNeJnB2mLY2m7M</div>
+        <div class="btn-group">
+            <a href="https://t.me/BOYMAT_token_BYT" class="btn btn-primary" target="_blank" id="btnBot">🤖 Telegram Bot</a>
+            <a href="https://app.ston.fi/swap?jetton=EQA84dxGA4EHWqx2pcMGYpvCG80tqRCoWJfNeJnB2mLY2m7M" class="btn btn-secondary" target="_blank" id="btnBuy">💰 Buy EURX</a>
+            <a href="https://t.me/BOYMAT_token_BYT" class="btn btn-secondary" target="_blank" id="btnSupport">💬 Support</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📚 Complete Ecosystem</div>
+        <div class="nav-grid">
+            <div class="nav-card"><a href="deposit.html">💰 Deposits</a></div>
+            <div class="nav-card"><a href="loans.html">🏦 Loans</a></div>
+            <div class="nav-card"><a href="loan-islamic.html">☪️ Islamic Finance</a></div>
+            <div class="nav-card"><a href="escrow.html">🔒 Escrow</a></div>
+            <div class="nav-card"><a href="tokenomics.html">📊 Tokenomics</a></div>
+            <div class="nav-card"><a href="kyc.html">🪪 KYC</a></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title" id="title1">⚡ What You Can Do With EURX</div>
+        <div class="cards">
+            <div class="card"><div class="card-icon">💰</div><h3 id="card1Title">Buy EURX</h3><p id="card1Desc">Swap TON for EURX on STON.fi. Or buy TON with card → swap.</p><a href="https://app.ston.fi/swap?jetton=EQA84dxGA4EHWqx2pcMGYpvCG80tqRCoWJfNeJnB2mLY2m7M" class="card-link" target="_blank">Buy now →</a></div>
+            <div class="card"><div class="card-icon">📈</div><h3 id="card2Title">Earn Yield</h3><p id="card2Desc">Deposit EURX for 25–60 months. Earn up to 19.8% APY.</p><a href="deposit.html" class="card-link">Start earning →</a></div>
+            <div class="card"><div class="card-icon">🏦</div><h3 id="card3Title">Get a Loan</h3><p id="card3Desc">Use EURX as collateral. Crypto mortgage, Islamic financing.</p><a href="loans.html" class="card-link">Apply now →</a></div>
+            <div class="card"><div class="card-icon">🔒</div><h3 id="card4Title">Escrow Services</h3><p id="card4Desc">SWIFT GPI, DMCC Dubai, LEXR Switzerland. Safe fiat → EURX.</p><a href="escrow.html" class="card-link">Learn more →</a></div>
+            <div class="card"><div class="card-icon">🥇</div><h3 id="card5Title">Gold & Diamonds</h3><p id="card5Desc">Buy tokenized gold (PAXG, XAUT) with EURX. 5–20 years storage.</p><a href="deposit-gold.html" class="card-link">Invest →</a></div>
+            <div class="card"><div class="card-icon">🏢</div><h3 id="card6Title">Business Solutions</h3><p id="card6Desc">Accept EURX payments. Corporate treasury, B2B cross-border.</p><a href="https://t.me/byt_assist_bot" class="card-link">Get started →</a></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">💰 EURX Tokenomics</div>
+        <div class="cards">
+            <div class="card"><div class="card-icon">🔄</div><h3>Total Supply</h3><p>1,000,000,000,000 EURX<br>Fixed. No mint. No freeze.</p></div>
+            <div class="card"><div class="card-icon">🔒</div><h3>Ownership Revoked</h3><p>Admin rights are revoked. No one can mint new tokens or freeze wallets.</p></div>
+            <div class="card"><div class="card-icon">🏦</div><h3>Part of BYT Assist</h3><p>EURX is integrated into the BYT Assist ecosystem — deposits, loans, escrow.</p></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 EURX — Part of BYT Assist ecosystem</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="faq.html">FAQ</a> |
+            <a href="whitepaper.html">Whitepaper</a> |
+            <a href="tokenomics.html">Tokenomics</a> |
+            <a href="roadmap.html">Roadmap</a> |
+            <a href="security.html">Security</a> |
+            <a href="kyc.html">KYC</a> |
+            <a href="deposit.html">Deposits</a> |
+            <a href="loans.html">Loans</a> |
+            <a href="loan-islamic.html">Islamic</a> |
+            <a href="escrow.html">Escrow</a>
+        </p>
+        <p>
+            <a href="https://t.me/BOYMAT_token_BYT" target="_blank">Telegram</a> |
+            <a href="https://tonviewer.com/EQA84dxGA4EHWqx2pcMGYpvCG80tqRCoWJfNeJnB2mLY2m7M" target="_blank">Tonviewer</a>
+        </p>
+        <p style="font-size:0.8rem">Network: TON | Contract: EQA84dxGA4EHWqx2pcMGYpvCG80tqRCoWJfNeJnB2mLY2m7M</p>
+    </div>
+</div>
+
+<script>
+    const translations = {
+        en: {
+            btnBot: "🤖 Telegram Bot",
+            btnBuy: "💰 Buy EURX",
+            btnSupport: "💬 Support",
+            title1: "⚡ What You Can Do With EURX",
+            card1Title: "Buy EURX",
+            card1Desc: "Swap TON for EURX on STON.fi. Or buy TON with card → swap.",
+            card2Title: "Earn Yield",
+            card2Desc: "Deposit EURX for 25–60 months. Earn up to 19.8% APY.",
+            card3Title: "Get a Loan",
+            card3Desc: "Use EURX as collateral. Crypto mortgage, Islamic financing.",
+            card4Title: "Escrow Services",
+            card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Switzerland. Safe fiat → EURX.",
+            card5Title: "Gold & Diamonds",
+            card5Desc: "Buy tokenized gold (PAXG, XAUT) with EURX. 5–20 years storage.",
+            card6Title: "Business Solutions",
+            card6Desc: "Accept EURX payments. Corporate treasury, B2B cross-border."
+        },
+        ru: {
+            btnBot: "🤖 Telegram Бот",
+            btnBuy: "💰 Купить EURX",
+            btnSupport: "💬 Поддержка",
+            title1: "⚡ Что можно делать с EURX",
+            card1Title: "Купить EURX",
+            card1Desc: "Обменяйте TON на EURX на STON.fi. Или купите TON за карту → обменяйте.",
+            card2Title: "Зарабатывать",
+            card2Desc: "Депозит EURX на 25–60 месяцев. Доход до 19.8% годовых.",
+            card3Title: "Получить кредит",
+            card3Desc: "EURX как залог. Крипто-ипотека, исламское финансирование.",
+            card4Title: "Эскроу",
+            card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Switzerland. Безопасно.",
+            card5Title: "Золото и бриллианты",
+            card5Desc: "Покупайте токенизированное золото (PAXG, XAUT) за EURX.",
+            card6Title: "Бизнес решения",
+            card6Desc: "Принимайте EURX. Корпоративные казначейства, B2B."
+        }
+    };
+    const defaultLang = "en";
+    function setLanguage(lang) {
+        const t = translations[lang] || translations[defaultLang];
+        document.getElementById('btnBot').innerText = t.btnBot;
+        document.getElementById('btnBuy').innerText = t.btnBuy;
+        document.getElementById('btnSupport').innerText = t.btnSupport;
+        document.getElementById('title1').innerText = t.title1;
+        document.getElementById('card1Title').innerText = t.card1Title;
+        document.getElementById('card1Desc').innerText = t.card1Desc;
+        document.getElementById('card2Title').innerText = t.card2Title;
+        document.getElementById('card2Desc').innerText = t.card2Desc;
+        document.getElementById('card3Title').innerText = t.card3Title;
+        document.getElementById('card3Desc').innerText = t.card3Desc;
+        document.getElementById('card4Title').innerText = t.card4Title;
+        document.getElementById('card4Desc').innerText = t.card4Desc;
+        document.getElementById('card5Title').innerText = t.card5Title;
+        document.getElementById('card5Desc').innerText = t.card5Desc;
+        document.getElementById('card6Title').innerText = t.card6Title;
+        document.getElementById('card6Desc').innerText = t.card6Desc;
+        localStorage.setItem('eurx_lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        if(document.querySelector(`.lang-btn[data-lang="${lang}"]`)) document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    }
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    const savedLang = localStorage.getItem('eurx_lang');
+    if(savedLang && translations[savedLang]) setLanguage(savedLang);
+    else setLanguage('en');
+</script>
+</body>
+</html>
